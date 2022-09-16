@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
+
+</head>
+
+<body>
+
+    <form class="grid" action="/result" method="POST">
+
+        {% if name %}
+        <center>
+            <h3 style="color: blue;" class="let_space">Music Genre is : {{name}}  </h3>
+        </center>
+
+        {% endif %}
+
+        <label for="name">INPUT your FILE:</label>
+        <!-- <input type="text" id="name" name="name"> -->
+        
+
+        <!--  **************************************************************   -->
+
+        <input type="file" id="name" hidden="hidden" name="name"/>
+        <button type="button" id="custom-button">CHOOSE A FILE</button>
+        <span id="custom-text"> </span>
+
+        <script>const realFileBtn = document.getElementById("name");
+            const customBtn = document.getElementById("custom-button");
+            const customTxt = document.getElementById("custom-text");
+
+            customBtn.addEventListener("click", function () {
+                realFileBtn.click();
+            });
+
+            realFileBtn.addEventListener("change", function () {
+                if (realFileBtn.value) {
+                    customTxt.innerHTML = realFileBtn.value.match(
+                        /[\/\\]([\w\d\s\.\-\(\)]+)$/
+                    )[1];
+                } else {
+                    customTxt.innerHTML = " .. ";
+                }
+            });
+
+        </script>
+
+        <!--  **************************************************************   -->
+
+        <center><input class="file_submit" type="Submit"></center>
+
+    </form>
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+
+
+</body>
+
+</html>
